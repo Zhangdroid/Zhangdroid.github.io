@@ -1,11 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Zhangdroid</title>
-  </head>
-  <body>
-    <app></app>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HTML5 Demo: getUserMedia (Treehouse Blog)</title>
+</head>
+<body>
+  <div id="video-container">
+    <video id="camera-stream" width="500" autoplay></video>
+  </div>
+  <script>
+  window.onload = function() {
+
+    // Normalize the various vendor prefixed versions of getUserMedia.
+    navigator.getUserMedia = (navigator.getUserMedia ||
+                              navigator.webkitGetUserMedia ||
+                              navigator.mozGetUserMedia ||
+                              navigator.msGetUserMedia);
+                              if (navigator.getUserMedia) {
+  // Request the camera.
+  navigator.getUserMedia(
+    // Constraints
+    {
+      video: true
+    },
+
+    // Success Callback
+    function(localMediaStream) {
+      var vid = document.getElementById('camera-stream');
+
+      // Create an object URL for the video stream and use this
+      // to set the video source.
+      vid.src = window.URL.createObjectURL(localMediaStream);
+    },
+
+    // Error Callback
+    function(err) {
+      // Log the error to the console.
+      console.log('The following error occurred when trying to use getUserMedia: ' + err);
+    }
+  );
+
+} else {
+  alert('Sorry, your browser does not support getUserMedia');
+}
+// Get a reference to the video element on the page.
+
+
+  }
+  </script>
+</body>
 </html>
