@@ -1,5 +1,7 @@
 # blog
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Zhangdroid/Zhangdroid.github.io.svg)](https://greenkeeper.io/)
+
 > A Vue.js project
 
 ## Build Setup
